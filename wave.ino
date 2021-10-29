@@ -36,9 +36,13 @@
 GxIO_Class io(SPI, /*CS=5*/ EPD_CS, /*DC=*/ EPD_DC, /*RST=*/ EPD_RES);
 GxEPD_Class display(io, /*RST=*/ EPD_RES, /*BUSY=*/ EPD_BUSY);
 
+RTC_DATA_ATTR uint8_t image_counter;
+
 int8_t connect_wifi();
 
 void setup() {
+  char img_string[6];
+  
   DEBUG.begin(115200);
   DEBUG.println();
   DEBUG.println("paperd.ink");
@@ -76,8 +80,9 @@ void setup() {
   }else{
     get_date_dtls(TIME_ZONE);
   }
-  
-  drawBitmapFrom_SD_ToBuffer(&display, SPIFFS, "5.bmp", 0, 0, 0);
+
+  sprintf(img_string, "%d.bmp", (image_counter++%NUM_IMAGES)+1);
+  drawBitmapFrom_SD_ToBuffer(&display, SPIFFS, img_string, 0, 0, 0);
   
   display_tasks(&display);
   diplay_date(&display);

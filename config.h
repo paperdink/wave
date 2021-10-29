@@ -21,6 +21,7 @@
 #define TIME_ZONE "-05:30" // your time zone
 #define START_DAY_OFFSET 0 // Offset to change start day. 0=>Sun, 1=>Sat, 2=>Fri ... 6=>Mon
 #define FORECAST_HOURS 9 // Show forecasted weather this many hours from update time. 0 for current weather
+#define NUM_IMAGES 5 // Number of images in data folder. Will cycle through these images
 #define UPDATES_PER_DAY 1
 // Number of times to update starting 12am
 // 1 = Updates every 24 hours 

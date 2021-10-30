@@ -101,7 +101,7 @@ void setup() {
   digitalWrite(EPD_RES, HIGH);
 
   // Sleep till update time.
-  uint64_t sleep_time = (86400/(UPDATES_PER_DAY))-((now.mil_hour*3600)+(now.min*60)+(now.sec));
+  uint64_t sleep_time = (86400/(UPDATES_PER_DAY))-(((now.mil_hour*3600)+(now.min*60)+(now.sec))%(86400/UPDATES_PER_DAY));
   esp_sleep_enable_timer_wakeup(sleep_time*uS_TO_S_FACTOR);
   Serial.printf("Going to sleep for %lld seconds...", sleep_time);
   // Go to sleep

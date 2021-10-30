@@ -36,7 +36,8 @@ int8_t FetchTODO(){
   ArudinoStreamParser parser;
   
   parser.setListener(&todo_listener);
-  
+
+  // Example of how to make a HTTP request with more control
   DEBUG.println("Starting connection to server...");
   if (!client.connect(server, 443)){
     DEBUG.println("Connection failed!");

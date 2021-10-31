@@ -16,7 +16,7 @@ int8_t get_date_dtls(String time_zone) {
   
   struct tm timeinfo;
   if(!getLocalTime(&timeinfo)){
-    Serial.println("Failed to obtain time");
+    DEBUG.println("Failed to obtain time");
     return -1;
   }
   time_t epoch = mktime(&timeinfo);
@@ -39,6 +39,6 @@ int8_t get_date_dtls(String time_zone) {
     now.hour = now.mil_hour;
   }
 
-  Serial.printf("Time is %d %d:%d:%d on %s on the %d/%d/%d . It is the month of %s. day_offset: %d\n",now.mil_hour,now.hour,now.min,now.sec,now.wday,now.mday,now.month_num,now.year, now.month, now.day_offset);
+  DEBUG.printf("Time is %d %d:%d:%d on %s on the %d/%d/%d . It is the month of %s. day_offset: %d\n",now.mil_hour,now.hour,now.min,now.sec,now.wday,now.mday,now.month_num,now.year, now.month, now.day_offset);
   return 0;
 }

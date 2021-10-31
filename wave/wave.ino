@@ -90,7 +90,7 @@ void setup() {
   
   display.update();
 
-  Serial.println("Turning off everything");
+  DEBUG.println("Turning off everything");
   digitalWrite(SD_EN, HIGH);
   digitalWrite(BATT_EN, HIGH);
   digitalWrite(EPD_EN, HIGH);
@@ -103,7 +103,7 @@ void setup() {
   // Sleep till update time.
   uint64_t sleep_time = (86400/(UPDATES_PER_DAY))-(((now.mil_hour*3600)+(now.min*60)+(now.sec))%(86400/UPDATES_PER_DAY));
   esp_sleep_enable_timer_wakeup(sleep_time*uS_TO_S_FACTOR);
-  Serial.printf("Going to sleep for %lld seconds...", sleep_time);
+  DEBUG.printf("Going to sleep for %lld seconds...", sleep_time);
   // Go to sleep
   esp_deep_sleep_start();
 }
@@ -118,12 +118,12 @@ int8_t connect_wifi(){
  WiFi.begin(SSID, PASSWORD);
  while (WiFi.status() != WL_CONNECTED ) {
    delay(500);
-   Serial.print(".");
+   DEBUG.print(".");
    if(connAttempts > 40){
     return -1;
    }
    connAttempts++;
  }
- Serial.println("Connected");
+ DEBUG.println("Connected");
  return 0;
 }

@@ -1,5 +1,7 @@
 # Wave
 
+Note: This has been moved to the new Paperd.ink library [here](https://github.com/paperdink/PaperdInk-Library/tree/main/examples/Wave).
+
 ![Full Image](wave_image.png)
 
 ## Install Library Dependencies (from arduino library manager)
